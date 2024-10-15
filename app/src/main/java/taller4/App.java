@@ -25,6 +25,35 @@ public class App {
      * hasta ese número separados por comas en grupos de hasta 8 números.
      * 
     */
+    
+           
+public static String NUmImpar(int numero){
+        try {
+            
+            final short numero100 = 100; 
+            final short numero500 = 500;
+            final short cantidad = 8;
+         
+ 
+            if(Numero < numero100 || numero > numero500){
+                System.out.println("Numero no valido"); }
+            else{
+                int numero1 = 0;
+        
+            for(short NmMin = 1; NmMin < numero; NmMin+=2){
+                System.out.print(NmMin +", " ); 
+                 numero1++;
+
+                if(numero1 == cantidad){
+                    System.out.println("");
+                    numero = 0;
+                 }
+                  
+                
+            }
+        }
+        }
+
 
     /* 2. 	Escriba una función que reciba un entero N mayor de 2  y retorne un string cono esos N términos de la 
     serie de Fibonacci (La sucesión de Fibonacci se trata de una serie infinita de números naturales que empieza con un 0 y un 1 
@@ -34,6 +63,35 @@ public class App {
      * 
     */
 
+     public static String numerofibonacci(int Num) {
+        try {
+            if (Num < 2) {
+                System.out.print("Numero no valido");
+                
+            } else {
+                int Cero = 0, Uno = 1, resultado = 0 ;
+                 
+               
+            for (int i = 0; i < Num; i++) {    
+                   
+                    
+                    
+                    Cero = Uno;
+                    Uno = resultado;
+                    resultado = Cero + Uno; 
+                    
+                    System.out.print( + resultado+", ");
+                }
+            } 
+            return "";
+
+
+        } catch (Exception e) {
+            return "Ocurrio un error \n";
+        }
+        
+    }
+            
     /* 
      * 3.	Diseñar y desarrollar una función que NO reciba datos de entrada, genere aleatoriamente un número entre 2 y 355, 
        le calcule su raíz cuadrada y retorne este valor. Para calcular las raíces usar la función Sqrt de la biblioteca Math.
@@ -42,7 +100,28 @@ public class App {
        de veces que va a llamar a la función y en un ciclo, mostrar los resultados.
 
     */
+public static String Raizcua(){
 
+        try {
+            
+            final int mayor = 30, minimo = 20;
+            final int mayorR = 355, minimoR = 2;
+            int Aleatorio = minimo + (int) ((mayor - minimo + 1) * Math.random());
+            String txt_return = "";
+
+            for(int i = 0;i <= Aleatorio; i++){
+                int AleatorioR = minimoR + (int) ((mayorR - minimoR + 1) * Math.random());
+                int Raiz = (int) Math.sqrt(AleatorioR);
+
+                txt_return+=("Numero: " +AleatorioR+ ", Raiz: "+Raiz +" (redondeada)\n");
+            }
+         
+            
+            return txt_return;
+        } catch (Exception e) {
+           return "Ocurrio un error \n"+ e;
+        }
+    }
 
 
 
@@ -54,6 +133,36 @@ public class App {
     */
 
 
+    public static String generarNumerosAleatorios(int min, int max) {
+
+    try {
+        final int cantidadNumeros = 900;
+        int numeroAleatorio;
+        int divisor = 2, residuo = 0;
+        int contadorPares = 0;
+        String resultado = "";
+
+        if (min >= max) {
+            resultado += "Rango de Números Inválido";
+        } else {
+            for (int i = 0; i < cantidadNumeros; i++) {
+                numeroAleatorio = min + (int) ((max - min + 1) * Math.random());
+
+                if (numeroAleatorio % divisor == residuo) {
+                    contadorPares++;
+                }
+            }
+            resultado += " \nCantidad de números pares: " + contadorPares;
+        }
+
+        return resultado;
+
+    } ccatch (Exception e) {
+        return "Ocurrió un error";
+    }
+}
+
+
 
 
     /* 5.	Diseñar y desarrollar una función que calcule una cantidad de números aleatorios que viene como parámetro de entrada 
@@ -61,8 +170,33 @@ public class App {
 
         Llame la función desde el main e imprimir el resultado arrojado.
 
-      
-    */
+      */
+    
+public static String calcularSumaAleatoria(int limiteInferior, int limiteSuperior) {
+    try {
+        int numeroAleatorio1;
+        int numeroAleatorio2;
+        int sumaAleatoria = 0;
+        String resultado = "";
+
+        numeroAleatorio1 = limiteInferior + (int) ((limiteSuperior - limiteInferior + 1) * Math.random());
+
+        if (limiteInferior >= limiteSuperior) {
+            return "Rango de Números Inválido";
+        }
+
+        for (int i = 0; i <= numeroAleatorio1; i++) {
+            numeroAleatorio2 = limiteInferior + (int) ((limiteSuperior - limiteInferior + 1) * Math.random());
+            sumaAleatoria += numeroAleatorio2;
+        }
+
+        resultado += ("La suma de los aleatorios es de: " + sumaAleatoria);
+        return resultado;
+
+    } ccatch (Exception e) {
+        return "Ocurrió un error \n";
+    }
+}
 
 
     /* 6.	Se requiere una función para simular el sorteo de una lotería, de acuerdo con las siguientes condiciones:
@@ -104,5 +238,32 @@ public class App {
      * 
      * 
     */
+    public static String realizarSorteo() {
+    try {
+        String resultado = "";
+        int totalSorteos = 20;
 
+        for (int i = 1; i <= totalSorteos; i++) {
+            int numeroGanador = (int) (Math.random() * 10000);
+            int serie = (int) (Math.random() * (150 - 100 + 1)) + 100;
+
+            if (i == 1) {
+                resultado += "\n====== Premio Mayor ==========\n";
+            } else if (i == 5) {
+                resultado += "\n====== PREMIOS SECOS ========\n";
+            } else if (i == totalSorteos) {
+                resultado += "====== PREMIOS MENORES =======\n";
+            }
+
+            resultado += "Sorteo #" + i + " - Número Ganador: " + String.format("%04d", numeroGanador) + " - Serie: " + serie + "\n";
+        
+
+        return resultado;
+    } catch (Exception e) {
+        return "Ocurrió un error \n" + e;
+    }
+  }
 }
+
+
+
